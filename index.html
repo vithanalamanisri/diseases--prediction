@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Disease Predictor Professional</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar" role="banner">
+    <div class="brand">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect width="24" height="24" rx="6" fill="#fff" opacity="0.06"/>
+        <path d="M12 4v8l4 2" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1>Disease Predictor</h1>
+    </div>
+
+    <nav class="mainnav" role="navigation" aria-label="Main navigation">
+      <a href="#home" data-page="home" class="navlink active">Home</a>
+      <a href="#about" data-page="about" class="navlink">About</a>
+      <a href="#how" data-page="how" class="navlink">How It Works</a>
+      <a href="#contact" data-page="contact" class="navlink">Contact</a>
+    </nav>
+  </header>
+
+  <header class="sub">
+    <p id="subtitle">Enter symptoms and details, select language</p>
+  </header>
+
+  <main class="container" role="main" id="app">
+
+    <section id="page-home" class="page active" aria-labelledby="formTitle">
+      <div class="column">
+        <h2 id="formTitle">Enter Details</h2>
+
+        <select id="language" class="lang-select" aria-label="Language select">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+          <option value="te">తెలుగు</option>
+        </select>
+
+        <form id="symptomForm" autocomplete="off">
+          <label id="symptomLabel" for="symptoms">Symptoms (comma separated)</label>
+          <div class="suggestions-container">
+            <input type="text" id="symptoms" placeholder="e.g. fever, cough" aria-describedby="symptomLabel" />
+            <div id="suggestions" class="suggestions-box" role="listbox" aria-label="Symptom suggestions"></div>
+          </div>
+
+          <label id="ageLabel" for="age">Age</label>
+          <input type="number" id="age" min="1" max="120" placeholder="e.g. 25">
+
+          <label id="genderLabel" for="gender">Gender</label>
+          <select id="gender" aria-label="Gender select">
+            <option value="">Select</option>
+            <option value="male" data-en="Male" data-hi="पुरुष" data-te="పురుషుడు">Male</option>
+            <option value="female" data-en="Female" data-hi="महिला" data-te="స్త్రీ">Female</option>
+            <option value="other" data-en="Other" data-hi="अन्य" data-te="ఇతర">Other</option>
+          </select>
+
+          <label id="weightLabel" for="weight">Weight (kg)</label>
+          <input type="number" id="weight" min="1" max="300" placeholder="e.g. 60">
+
+          <div style="display:flex;gap:8px;margin-top:6px;">
+            <button type="button" id="voiceBtn" style="flex:1">🎤 Voice Input</button>
+            <button type="submit" id="predictBtn" style="flex:1">Predict Disease</button>
+          </div>
+        </form>
+
+        <p class="muted" style="margin-top:10px;font-size:0.9rem;">
+          Tip: use the suggestion box for symptom entries — click a suggestion to add it quickly.
+        </p>
+      </div>
+
+      <div class="column">
+        <h2 id="predictionTitle">Prediction</h2>
+        <div id="result" class="result-box">
+          Enter symptoms and click Predict Disease.
+        </div>
+      </div>
+    </section>
+
+    <section id="page-about" class="page" aria-labelledby="aboutTitle">
+      <div class="column" style="grid-column:1/-1">
+        <h2 id="aboutTitle">🩺 About the Project — Disease Predictor</h2>
+        <div class="content-card">
+          <p>
+            The Disease Predictor is an intelligent, web-based health assistant designed to help users identify potential diseases through a simple and interactive interface.
+            By entering basic details such as symptoms, age, gender, and weight, the system analyzes the information and generates an accurate prediction of possible diseases at the click of a button.
+          </p>
+
+          <p style="margin-top:10px;">
+            The platform provides a detailed output that includes the predicted disease name, recommended allopathic medicines, Ayurvedic treatments, general medicines, and practical health advice.
+            A confidence level is also displayed to indicate the system’s reliability and accuracy in matching the user’s symptoms.
+          </p>
+
+          <p style="margin-top:10px;">
+            This project is developed with the vision of promoting early health awareness and digital healthcare accessibility. It empowers users to gain quick insights into their health status, make informed decisions, and seek timely medical consultation.
+            By integrating AI-driven logic with a user-friendly interface, the Disease Predictor aims to bridge the gap between technology and preventive healthcare, making health assessment simpler, faster, and smarter.
+          </p>
+
+          <h3 style="margin-top:14px;">👩‍💻 Our Team</h3>
+          <div class="team-list">
+            <div>V. Manisri</div>
+            <div>Ch. A. R. Mahi</div>
+            <div>B. S. M. Sirisha</div>
+            <div>Ch. K. D. Mahalakshmi</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-how" class="page" aria-labelledby="howTitle">
+      <div class="column" style="grid-column:1/-1">
+        <h2 id="howTitle">⚙ How It Works</h2>
+        <div class="content-card">
+          <h4>Input Details</h4>
+          <p>The user enters basic information such as symptoms, age, gender, and weight into the system.</p>
+
+          <h4>Data Processing</h4>
+          <p>The system analyses the entered details using a built-in AI-based symptom–disease database. It compares the input symptoms with known medical patterns.</p>
+
+          <h4>Prediction Generation</h4>
+          <p>Based on the matching results, the system predicts the most likely disease associated with the given symptoms.</p>
+
+          <h4>Result Display</h4>
+          <p>The output includes:</p>
+          <ul>
+            <li>🩺 Predicted Disease Name</li>
+            <li>💊 Allopathic Medicines</li>
+            <li>🌿 Ayurvedic Remedies</li>
+            <li>🧘 General Medicines and Health Advice</li>
+            <li>📊 Confidence Level showing prediction accuracy</li>
+          </ul>
+
+          <h4>User Guidance</h4>
+          <p>The user can use the provided health information as a reference or awareness guide and is advised to consult a doctor for professional diagnosis and treatment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-contact" class="page" aria-labelledby="contactTitle">
+      <div class="column" style="grid-column:1/-1">
+        <h2 id="contactTitle">📞 Contact Details</h2>
+        <div class="content-card">
+          <p><strong>Name:</strong> Vithanala Manisri</p>
+          <p><strong>Phone:</strong> +91 8019321512</p>
+          <p><strong>College:</strong> BVC INSTITUTE OF TECHNOLOGY AND SCIENCE</p>
+          <p><strong>Email:</strong> vithanalamanisri@gmail.com</p>
+          <p><strong>Place:</strong> Andhra Pradesh, India</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer">
+    &copy; 2025 Disease Predictor Professional
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
