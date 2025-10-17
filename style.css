@@ -4,11 +4,12 @@
     --card:#ffffff;
     --muted:#6b7280;
     --bg1:#f7f9fc;
-    --glass: rgba(255,255,255,0.9);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter','Poppins',Segoe UI,Tahoma,Geneva,Verdana,sans-serif;}
+
 html,body{height:100%;}
+
 body{
     background: linear-gradient(180deg,var(--bg1) 0%, #eef6ff 100%);
     color:#111827;
@@ -19,7 +20,6 @@ body{
     padding:18px;
 }
 
-/* Top header + nav */
 header.topbar{
     display:flex;
     align-items:center;
@@ -32,7 +32,7 @@ header.topbar{
     box-shadow:0 8px 30px rgba(13,59,102,0.12);
 }
 .brand {display:flex;align-items:center;gap:10px;}
-.brand h1{font-size:1.25rem;margin:0;font-weight:700;letter-spacing:0.2px;}
+.brand h1{font-size:1.25rem;margin:0;font-weight:700;}
 nav.mainnav{display:flex;gap:8px;align-items:center;}
 nav.mainnav a{
     color:rgba(255,255,255,0.92);
@@ -51,7 +51,6 @@ nav.mainnav a.active, nav.mainnav a:hover{
 header.sub{
     padding:14px 18px;
     border-radius:10px;
-    background:transparent;
     text-align:center;
 }
 header.sub p{opacity:0.95;margin-top:6px;font-size:0.95rem;}
@@ -86,8 +85,31 @@ form input, form select, form button, .lang-select{
     background:transparent;
 }
 form input:focus, form select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(13,59,102,0.06);}
-form button{border:none;background:var(--primary);color:#fff;font-weight:700;cursor:pointer;transition:all .18s ease;}
-form button:hover{transform:translateY(-1px); background:#06304e;}
+
+.button-group {
+    display:flex;
+    gap:8px;
+    margin-top:16px;
+}
+.button-group button {
+    flex:1;
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+    transition:all .18s ease;
+}
+.button-group button:hover{
+    transform:translateY(-1px);
+    background:#06304e;
+}
+.button-group button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    background: var(--muted);
+}
 
 .suggestions-container{position:relative;}
 .suggestions-box{position:absolute;top:100%;left:0;width:100%;background:#fff;border:1px solid #e5e7eb;border-radius:0 0 8px 8px;max-height:220px;overflow:auto;z-index:100;display:none;box-shadow: 0 10px 20px rgba(0,0,0,0.1);}
@@ -99,27 +121,32 @@ form button:hover{transform:translateY(-1px); background:#06304e;}
 .confidence-bar{height:12px;background:#e6e7e9;border-radius:8px;margin-top:6px;overflow:hidden;}
 .confidence-fill{height:100%;background:linear-gradient(90deg,#4caf50,#8bc34a);border-radius:8px;}
 
-footer{text-align:center;padding:12px;border-radius:10px;background:transparent;color:#0f172a;opacity:0.9;}
+footer{text-align:center;padding:12px;margin-top:auto;color:#0f172a;opacity:0.9;}
 .lang-select{margin-bottom:14px;}
 
 .loading{opacity:0.85;}
 .error{color:#b00020;font-weight:600;}
 
-/* Pages */
 .page { display:none; }
-.page.active { display:block; }
+.page.active { display:grid; grid-template-columns: inherit; gap: inherit; align-items: inherit;} /* Changed to grid */
 
-/* About / How it works content */
 .content-card{background:#fff;padding:18px;border-radius:10px;box-shadow:0 8px 30px rgba(2,6,23,0.04);line-height:1.5;}
 .content-card ul { padding-left: 20px; margin-top: 10px; }
 .content-card h4 { margin-top: 10px; }
 .team-list{margin-top:10px;display:flex;flex-direction:column;gap:6px;}
 .team-list div{padding:8px;border-radius:6px;background:#f8fafc;border:1px solid #eef3f8;font-weight:600;}
-
-/* Responsive */
-@media (max-width:900px){
-    main.container{grid-template-columns: 1fr; padding-bottom:40px;}
-    nav.mainnav{flex-wrap:wrap;}
-}
-
 .muted{color:var(--muted);font-size:0.95rem;}
+
+/* ================================================= */
+/* RESPONSIVE FIX: Stacks columns on smaller screens */
+/* ================================================= */
+@media (max-width: 900px) {
+    main.container, .page.active {
+        grid-template-columns: 1fr; /* This is the key change */
+        padding-bottom: 40px;
+    }
+    nav.mainnav{
+        flex-wrap:wrap;
+        justify-content: center;
+    }
+}
